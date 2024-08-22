@@ -1,6 +1,8 @@
 #region IMPORTS
-from flask import Flask, jsonify
-from flask_cors import CORS, cross_origin
+from flask import Flask, jsonify, request
+from flask_cors import CORS
+from flask_swagger_ui import get_swaggerui_blueprint
+import services.user as user_service
 #endregion
 
 #region SET VARIABLES
@@ -9,10 +11,25 @@ CORS(app)
 #endregion
 
 #region API ENDPOINTS
-@cross_origin
 @app.route('/hello', methods=['GET'])
 def hello():
     return "HELLO"
+
+@app.route('/user/login', methods=['POST'])
+def user_login():
+    data = request.json
+    username = data.get('username', None)
+    password = data.get('password', None)
+
+    if username and password:
+        result = user_service.exists(username, password)
+        if result is not None:
+            return jsonify({"mensaje": "EXISTE"})
+        else:
+            return jsonify({"mensaje": "NO EXISTE"}), 400
+    else:
+        return jsonify({"error": "Faltan credenciales"}), 400
+
 #endregion
 
 # SERVER START URL => https://alviapi.ddns.net
