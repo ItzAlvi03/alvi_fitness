@@ -31,13 +31,11 @@ export class LoginComponent implements OnDestroy {
       this.subscriptions.push(
         this.backendHelper.post("/user/login", user).subscribe({
           next: (token:any) => {
-            console.log("TOKEN: ", token);
             localStorage.setItem("token", token);
           },
           error: (error:any) => {
             if(error.status !== 500) {
-              this.credentialErrors.push("email");
-              this.credentialErrors.push("password");
+              // Pop up de que no existe
             }
           }
         })
