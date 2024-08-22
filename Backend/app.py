@@ -18,11 +18,11 @@ def hello():
 @app.route('/user/login', methods=['POST'])
 def user_login():
     data = request.json
-    username = data.get('username', None)
+    email = data.get('email', None)
     password = data.get('password', None)
 
-    if username and password:
-        result = user_service.exists(username, password)
+    if email and password:
+        result = user_service.exists(email, password)
         if result is not None:
             return jsonify({"mensaje": "EXISTE"})
         else:
