@@ -1,10 +1,16 @@
-<div class="content">
+<div class="content w-100">
     <div class="left">
-        <h1>ALVI FITNESS</h1>
+        <h1>
+            NO <br>
+            PAIN <br>
+            NO <br>
+            GAIN <br>
+        </h1>
     </div>
     <div class="form">
-        <input type="email" name="email" id="email">
-        <input type="password" name="password" id="password">
-        <button>Iniciar sesión</button>
+        <img src="../../../assets/images/logo.png" alt="logo">
+        <input [ngClass]="{'invalid': credentialErrors.includes('email') && !email}" [(ngModel)]="email" type="email" name="email" id="email" placeholder="Email">
+        <input [ngClass]="{'invalid': credentialErrors.includes('password') && !password}" [(ngModel)]="password" type="password" name="password" id="password" placeholder="Contraseña">
+        <button (click)="userLogin()" class="login">Acceder</button>
     </div>
 </div>
