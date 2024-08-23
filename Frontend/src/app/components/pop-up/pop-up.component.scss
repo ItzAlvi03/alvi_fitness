@@ -1,0 +1,36 @@
+.pop-up {
+    position: fixed;
+    top: 10%;
+    right: -70%;
+    width: auto;
+    max-width: 35%;
+    padding: 14px;
+    font-size: 20px;
+    color: #fff;
+    font-weight: 700;
+    font-family: Montserrat, sans-serif;
+    border-radius: 6px;
+    z-index: 3;
+    transition: right 0.3s ease-out, opacity 0.6s ease-out;
+    opacity: 0;
+
+    &.correct {
+        background-color: green;
+        border: 1px solid green;
+    }
+
+    &.error {
+        background-color: red;
+        border: 1px solid red;
+    }
+
+    &.move-left {
+        right: 8%;
+        opacity: 1;
+    }
+
+    &.move-right {
+        right: -70%;
+        opacity: 0;
+    }
+}
