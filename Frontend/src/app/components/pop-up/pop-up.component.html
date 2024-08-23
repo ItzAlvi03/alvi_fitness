@@ -1,0 +1,3 @@
+<div *ngIf="show" [ngClass]="{'error': type === 'error', 'correct': type === 'correct', 'move-left': moveLeft, 'move-right': !moveLeft}" class="pop-up">
+    <span>{{ message }}</span>
+</div>
